@@ -1,10 +1,4 @@
 /*
- * create-pt - a possible way to complete the AP Computer Science Principles
- * Create Performance Task.
- *
- * Created March 25, 2024.
- * Modified April 2, 2024.
- *
  * README!!
  * FOR AP READER:
  *
