@@ -72,7 +72,6 @@ const ANSWER_FILE: &'static str = include_str!("answers.txt");
 /// print!("{}", s)
 /// ```
 ///
-///
 /// For example, the equivalent of using [`print!`] like this:
 /// ```no_run
 /// print!("{}{}", "Hello ", "world")
