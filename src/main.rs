@@ -37,12 +37,19 @@
 /// The Colorize trait, which
 /// allows for said formatting, is imported from this crate. (The way Rust
 /// trait implementing is like abstraction but the trait must be imported in
-/// the current context for them to work)
+/// the current context for them to work). The trait provides the
+/// following functions on any String:
+/// - any color (`red()`, `yellow()`, `green()`, etc.)
+/// - `bold()`
+/// - `italic()`
+/// and more
 use colored::Colorize;
+
 /// The rand crate/library: Has functions to generate random numbers; made 
 /// by a Rust community member (see https://crates.io/crates/rand). 
 /// The thread_rng function and Rng trait are imported from this crate.
 use rand::{thread_rng, Rng};
+
 /// The Rust Standard Crate, providing methods to read from IO 
 /// (stdin and stdout) and other things
 use std::{
