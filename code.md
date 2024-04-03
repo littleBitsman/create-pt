@@ -152,8 +152,8 @@ impl Game {
     /// Get the amount of guesses taken (equal to [`self.guesses.len()`])
     pub fn get_guess_count(&self) -> usize {
         // This doesn't need to be cloned due to being a primitive (usize is a
-        // positive integer that can index arrays or vectors, which are 
-        // unsized array)
+        // positive or zero integer that can index 
+        // arrays or vectors, which are unsized arrays)
         self.guesses.len()
     }
 
