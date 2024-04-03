@@ -1,3 +1,4 @@
+```rs
 /*
  * create-pt - a possible way to complete the AP Computer Science Principles Create Performance Task.
  * Created March 25, 2024.
@@ -258,3 +259,4 @@ fn main() {
         )
     }
 }
+```
