@@ -158,8 +158,8 @@ impl Game {
     /// Get the amount of guesses taken (equal to [`self.guesses.len()`])
     pub fn get_guess_count(&self) -> usize {
         // This doesn't need to be cloned due to being a primitive (usize is a
-        // positive integer that can index arrays or vectors, which is an unsized
-        // array)
+        // positive integer that can index arrays or vectors, which are 
+        // unsized array)
         self.guesses.len()
     }
 
@@ -192,8 +192,8 @@ impl Game {
 
             let mut chars_found: Vec<char> = vec![];
 
-            // Iteration!!! (Iterate through each character, 0-4 in indices, 1-5
-            // in normal terms and validate them)
+            // Iteration!!! (Iterate through each character, 0-4 in indices,
+            // 1-5 in normal terms and validate them)
             for i in 0..=4 {
                 let guess_char = guess_chars[i];
                 let correct_char = correct_chars[i];
@@ -258,7 +258,8 @@ fn main() {
         ));
         if let Ok(input) = read_line_stdin() {
             if wordle.submit_guess(input) {
-                // Submits guess, if that function returns true the user has won
+                // Submits guess, if that function returns true the user 
+                // has won
                 break;
             }
         } else {
@@ -281,7 +282,8 @@ fn main() {
                 4 => "Splendid".green(),
                 5 => "Great".green(),
                 6 => "Phew".yellow(),
-                // anything that isn't in the range [1, 6] (interval) isn't possible
+                // anything that isn't in the range [1, 6] (interval) 
+                // isn't possible
                 _ => "hacker 😡".red(),
             }
         );
