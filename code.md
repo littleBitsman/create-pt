@@ -38,19 +38,20 @@
  *   If the build fails, it is likely a system or library issue.
  */
 
-/// The colored crate/library: Has functions to format text/strings with colors
-/// and text formatting like bolding and italicizing; made by a Rust community
-/// member (see https://crates.io/crates/colorize). The Colorize trait, which
+/// The colored crate/library: Has functions to format text/strings with
+/// color and text formatting like bolding and italicizing; made by a Rust 
+/// community member (see https://crates.io/crates/colorize). 
+/// The Colorize trait, which
 /// allows for said formatting, is imported from this crate. (The way Rust
-/// trait implementing is like abstraction but the trait must be imported in the
-/// current context for them to work)
+/// trait implementing is like abstraction but the trait must be imported in
+/// the current context for them to work)
 use colored::Colorize;
-/// The rand crate/library: Has functions to generate random numbers; made by a
-/// Rust community member (see https://crates.io/crates/rand) The thread_rng
-/// function and Rng trait are imported from this crate.
+/// The rand crate/library: Has functions to generate random numbers; made 
+/// by a Rust community member (see https://crates.io/crates/rand). 
+/// The thread_rng function and Rng trait are imported from this crate.
 use rand::{thread_rng, Rng};
-/// The Rust Standard Crate, providing methods to read from IO (stdin and stdout)
-/// and other things
+/// The Rust Standard Crate, providing methods to read from IO 
+/// (stdin and stdout) and other things
 use std::{
     fmt::Display,
     io::{stdin, stdout, Result as IoResult, Write},
@@ -294,5 +295,4 @@ fn main() {
         )
     }
 }
-
 ```
