@@ -1,6 +1,8 @@
 ```rs
 /*
- * create-pt - a possible way to complete the AP Computer Science Principles Create Performance Task.
+ * create-pt - a possible way to complete the AP Computer Science Principles
+ * Create Performance Task.
+ *
  * Created March 25, 2024.
  * Modified April 2, 2024.
  *
@@ -36,23 +38,29 @@
  *   If the build fails, it is likely a system or library issue.
  */
 
-/// The colored crate/library: Has functions to format text/strings with colors and text formatting like bolding and italicizing;
-/// made by a Rust community member (see https://crates.io/crates/colorize). The Colorize trait, which allows for said formatting,
-/// is imported from this crate. (The way Rust trait implementing is like abstraction but the trait must be imported in the
+/// The colored crate/library: Has functions to format text/strings with colors
+/// and text formatting like bolding and italicizing; made by a Rust community
+/// member (see https://crates.io/crates/colorize). The Colorize trait, which
+/// allows for said formatting, is imported from this crate. (The way Rust
+/// trait implementing is like abstraction but the trait must be imported in the
 /// current context for them to work)
 use colored::Colorize;
-/// The rand crate/library: Has functions to generate random numbers; made by a Rust community member (see https://crates.io/crates/rand)
-/// The thread_rng function and Rng trait are imported from this crate.
+/// The rand crate/library: Has functions to generate random numbers; made by a
+/// Rust community member (see https://crates.io/crates/rand) The thread_rng
+/// function and Rng trait are imported from this crate.
 use rand::{thread_rng, Rng};
-/// The Rust Standard Crate, providing methods to read from IO (stdin and stdout) and other things
+/// The Rust Standard Crate, providing methods to read from IO (stdin and stdout)
+/// and other things
 use std::{
     fmt::Display,
     io::{stdin, stdout, Result as IoResult, Write},
 };
 
-/// words.txt: holds all possible Wordle guesses, made by a GitHub user (https://gist.github.com/dracos/dd0668f281e685bad51479e5acaadb93)
+/// words.txt: holds all possible Wordle guesses, made by a GitHub user
+/// (https://gist.github.com/dracos/dd0668f281e685bad51479e5acaadb93)
 const WORDS_FILE: &'static str = include_str!("words.txt");
-/// answers.txt: holds all possible Wordle answers, made by a GitHub user (https://gist.github.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b)
+/// answers.txt: holds all possible Wordle answers, made by a GitHub user
+/// (https://gist.github.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b)
 const ANSWER_FILE: &'static str = include_str!("answers.txt");
 
 /// Util for printing since the macro doesn't flush to stdout
@@ -92,7 +100,7 @@ struct Game {
     correct_word: String,
     guesses: Vec<String>,
     possible_words: Vec<String>,
-    has_won: bool
+    has_won: bool,
 }
 
 /// Functions for the game object
@@ -108,7 +116,8 @@ impl Game {
             .lines()
             .map(|v| v.to_lowercase())
             .collect::<Vec<String>>();
-        // Append the answers to the words since they aren't together for some reason
+        // Append the answers to the words since they aren't together for
+        // some reason
         words.append(&mut answers.clone());
         Self {
             correct_word: answers
@@ -171,7 +180,7 @@ impl Game {
             self.guesses.push(guess.to_lowercase());
 
             if guess.to_lowercase() == self.correct_word.to_lowercase() {
-                // yay winner! 
+                // yay winner!
                 println!("{}", guess.to_lowercase().green().bold());
                 self.has_won = true;
                 return true;
@@ -183,26 +192,50 @@ impl Game {
 
             let mut chars_found: Vec<char> = vec![];
 
-            // Iteration!!! (Iterate through each character, 0-4 in indices, 1-5 in normal terms and validate them)
+            // Iteration!!! (Iterate through each character, 0-4 in indices, 1-5
+            // in normal terms and validate them)
             for i in 0..=4 {
-                let guess_char = guess_chars.get(i).expect("how");
-                let correct_char = correct_chars.get(i).expect("how");
+                let guess_char = guess_chars[i];
+                let correct_char = correct_chars[i];
 
                 if guess_char == correct_char {
                     chars_found.push(guess_char.clone());
-                    final_str = format!("{}{}", final_str, guess_char.to_string().green().bold());
-                } else if correct_chars.iter().find(|v| v == &guess_char).is_some()
-                    && correct_chars
+                    final_str = format!(
+                        "{}{}", 
+                        final_str, 
+                        guess_char.to_string().green().bold()
+                    );
+                } else if correct_chars.iter().find(|v| {
+                        v == &&guess_char
+                    }).is_some() && correct_chars
                         .iter()
-                        .fold(0, |acc, v| if v == guess_char { acc + 1 } else { acc })
-                        > chars_found
+                        .fold(0, |acc, v| 
+                            if v == &guess_char { 
+                                acc + 1 
+                            } else { 
+                                acc 
+                            } 
+                        ) > chars_found
                             .iter()
-                            .fold(0, |acc, v| if v == guess_char { acc + 1 } else { acc })
+                            .fold(0, |acc, v| 
+                                if v == &guess_char { 
+                                    acc + 1
+                                } else { 
+                                    acc
+                                })
                 {
                     chars_found.push(guess_char.clone());
-                    final_str = format!("{}{}", final_str, guess_char.to_string().yellow().bold());
+                    final_str = format!(
+                        "{}{}", 
+                        final_str, 
+                        guess_char.to_string().yellow().bold()
+                    );
                 } else {
-                    final_str = format!("{}{}", final_str, guess_char.to_string().black());
+                    final_str = format!(
+                        "{}{}", 
+                        final_str, 
+                        guess_char.to_string().black()
+                    );
                 }
             }
 
@@ -224,7 +257,8 @@ fn main() {
             wordle.get_guess_count() + 1
         ));
         if let Ok(input) = read_line_stdin() {
-            if wordle.submit_guess(input) { // Submits guess, if that function returns true the user has won line
+            if wordle.submit_guess(input) {
+                // Submits guess, if that function returns true the user has won
                 break;
             }
         } else {
@@ -247,7 +281,8 @@ fn main() {
                 4 => "Splendid".green(),
                 5 => "Great".green(),
                 6 => "Phew".yellow(),
-                _ => "hacker 😡".red() // anything that isn't in the range [1, 6] (interval) isn't possible
+                // anything that isn't in the range [1, 6] (interval) isn't possible
+                _ => "hacker 😡".red(),
             }
         );
     } else {
@@ -259,4 +294,5 @@ fn main() {
         )
     }
 }
+
 ```
