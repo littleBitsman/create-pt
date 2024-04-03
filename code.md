@@ -185,8 +185,13 @@ impl Game {
                 self.has_won = true;
                 return true;
             }
-            let guess_chars = guess.to_lowercase().chars().collect::<Vec<char>>();
-            let correct_chars = self.correct_word.chars().collect::<Vec<char>>();
+            let guess_chars = guess
+                .to_lowercase()
+                .chars()
+                .collect::<Vec<char>>();
+            let correct_chars = self.correct_word
+                .chars()
+                .collect::<Vec<char>>();
 
             let mut final_str: String = String::new();
 
