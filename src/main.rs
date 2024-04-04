@@ -2,33 +2,16 @@
  * README!!
  * FOR AP READER:
  *
- * A couple of notes, mainly due to the complexity of the Rust
+ * A note, mainly due to the complexity of the Rust
  * programming language (which this is written in):
  *
- * - Feel free to Google any Rust concepts you may not understand
- *   (for example, macros like `println!` and `include_str!` or structs
- *    and their `impl`s, especially since AP CSP is intended for JavaScript
- *    or Python, which  are high-level languages, whilst Rust is a
- *    low-level language, like C or C++).
- *   (Minor sub-note: I would ESPECIALLY Google the `include_str!` macro and
- *    what it does.)
- *
- * - Any comment (green in VS Code, which I recommend you copy/paste into
- *   for ease of reading) with THREE slashes (`///`) instead of TWO (`//`)
- *   can be read as documentation for the code they accompany. If you are
- *   using Visual Studio or Visual Studio Code to read, you can hover over
- *   the name of the function/struct/impl/variable they accompany and see
- *   the documentation cleanly formatted.
- *
- * - If you ever plan on executing this code, you will need to install
- *   the Rust tools for your platform (cargo, rustup, etc.) from
- *   https://rust-lang.org. (If not, disregard this bullet.) Once you
- *   install them, create a new project with `cargo new create-pt` on
- *   your command line, traverse into the `./create-pt` directory, then
- *   run `cargo add colored rand`, copy and paste the code in this file
- *   to `./src/main.rs`, copy and paste `answers.txt` and `words.txt`
- *   into `./src`, and run `cargo run --release` on your command line.
- *   If the build fails, it is likely a system or library issue.
+ * Feel free to Google any Rust concepts you may not understand
+ * (for example, macros like `println!` and `include_str!` or structs
+ *  and their `impl`s, especially since AP CSP is intended for JavaScript
+ *  or Python, which  are high-level languages, whilst Rust is a
+ *  low-level language, like C or C++).
+ * (Minor sub-note: I would ESPECIALLY Google the `include_str!` macro and
+ *  what it does.)
  */
 
 /// The colored crate/library: Has functions to format text/strings with
