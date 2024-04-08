@@ -275,7 +275,7 @@ fn main() {
             }
         );
     } else {
-        println!("You {} :(", "lost".red().bold());
+        println!(r"You {} :(", "lost".red().bold());
         println!(
             "{}: {}",
             "The word was".italic(),
