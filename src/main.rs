@@ -30,8 +30,10 @@ use colored::Colorize;
 
 /// The rand crate/library: Has functions to generate random numbers; made 
 /// by a Rust community member (see https://crates.io/crates/rand). 
-/// The thread_rng function and Rng trait are imported from this crate.
-use rand::{thread_rng, Rng};
+/// The thread_rng function and SliceRandom trait are imported from this crate.
+/// The SliceRandom trait allows for random selection of elements from 
+/// slices (Rust for arrays).
+use rand::{thread_rng, prelude::SliceRandom};
 
 /// The Rust Standard Crate, providing methods to read from IO 
 /// (stdin and stdout) and other things
@@ -103,10 +105,7 @@ impl Game {
         // some reason
         words.append(&mut answers.clone());
         Self {
-            correct_word: answers
-                .get(thread_rng().gen_range(0..answers.len()))
-                .expect("well thats awkward")
-                .clone(),
+            correct_word: answers.choose(&mut thread_rng()).expect("how").clone(),
             guesses: vec![],
             possible_words: words,
             has_won: false,
